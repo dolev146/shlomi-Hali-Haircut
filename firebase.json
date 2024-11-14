@@ -1,6 +1,7 @@
 {
   "hosting": {
     "public": "dist",
+    "site" : "shlomi-hali-haircut",
     "ignore": [
       "firebase.json",
       "**/.*",
