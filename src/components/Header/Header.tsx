@@ -7,7 +7,7 @@ import { ContactIcons } from "./ContactIcons";
 
 const Header = () => {
   return (
-    <div>
+    <div style={{ backgroundColor: "white", width: "100vw" }}>
       <div
         style={{
           marginBottom: "75px",
@@ -26,8 +26,8 @@ const Header = () => {
         }}
       >
         <div className="fade-up" style={{ textAlign: "center" }}>
-          <h1>שלומי חלי</h1>
-          <h2>סיבוב אחד ואתה חד</h2>
+          <h1 style={{ userSelect: "none" }}>שלומי חלי</h1>
+          <h2 style={{ userSelect: "none" }}>סיבוב אחד ואתה חד</h2>
         </div>
         <div
           style={{
@@ -60,9 +60,10 @@ const Header = () => {
         justifyContent={"center"}
         alignItems={"center"}
         paddingTop={"0.5rem"}
+        sx={{ backgroundColor: "white" }}
       >
-        <Typography>רחוב עמוס 22 נשר</Typography>
-        <LocationOnIcon width={10} />
+        <LocationOnIcon color="info" width={10} />
+        <Typography color="black">רחוב עמוס 22 נשר</Typography>
       </Box>
       <ContactIcons />
     </div>
