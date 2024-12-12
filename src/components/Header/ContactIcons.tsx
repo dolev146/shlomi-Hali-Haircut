@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, IconButton } from "@mui/material";
+import { Box, IconButton, useTheme } from "@mui/material";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import PhoneIcon from "@mui/icons-material/Phone";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -11,13 +11,13 @@ const ContactIcons: React.FC = () => {
   const phoneLink = `tel:${phoneNumber}`;
   const instagramLink = "https://www.instagram.com/shlomihali_barbershop/"; // Replace with your Instagram URL
   const wazeLink = "https://www.waze.com/ul?q=שלומי חלי shlomi hali"; // Replace with your Waze query or URL
-
   return (
     <Box
       display="flex"
       justifyContent="center"
       alignItems="center"
       paddingTop="0.5rem"
+      sx={{ backgroundColor: "white" }}
     >
       <IconButton
         href={whatsappLink}
@@ -25,11 +25,11 @@ const ContactIcons: React.FC = () => {
         rel="noopener noreferrer"
         aria-label="WhatsApp"
       >
-        <WhatsAppIcon />
+        <WhatsAppIcon color="info" />
       </IconButton>
 
       <IconButton href={phoneLink} aria-label="Phone">
-        <PhoneIcon />
+        <PhoneIcon color="info" />
       </IconButton>
 
       <IconButton
@@ -38,7 +38,7 @@ const ContactIcons: React.FC = () => {
         rel="noopener noreferrer"
         aria-label="Instagram"
       >
-        <InstagramIcon />
+        <InstagramIcon color="info" />
       </IconButton>
 
       <IconButton
@@ -47,7 +47,7 @@ const ContactIcons: React.FC = () => {
         rel="noopener noreferrer"
         aria-label="Waze"
       >
-        <DirectionsIcon />
+        <DirectionsIcon color="info" />
       </IconButton>
     </Box>
   );
