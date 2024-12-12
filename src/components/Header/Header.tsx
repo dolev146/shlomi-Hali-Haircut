@@ -1,4 +1,3 @@
-import React from "react";
 import BusinessIcon from "../../assets/business_icon.jpg";
 import BusinessFlyer from "../../assets/business_flyer.jpg";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
