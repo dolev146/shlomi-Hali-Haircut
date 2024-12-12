@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Box } from "@mui/material";
 import { generateTimeIntervals } from "./utils/generateTimeIntervals";
 import { AppointmentHeader } from "./components/AppointmentHeader";
@@ -57,7 +57,7 @@ const AppointmentScheduler = () => {
           gridTemplateColumns: {
             xs: "repeat(2, 1fr)", // 2 columns for small screens (e.g., iPhone)
             sm: "repeat(3, 1fr)", // 3 columns for larger screens
-            lg : "repeat(4, 1fr)"
+            lg: "repeat(4, 1fr)",
           },
           gap: "16px", // Spacing between grid items
         }}
