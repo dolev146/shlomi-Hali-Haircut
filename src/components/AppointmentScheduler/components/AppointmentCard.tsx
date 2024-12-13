@@ -26,7 +26,7 @@ const AppointmentCard = ({
   return (
     <Card key={interval} style={{ marginBottom: "16px" }}>
       <CardContent>
-        <Typography variant="h6" gutterBottom>
+        <Typography variant="h6" gutterBottom sx={{ userSelect: "none" }}>
           {interval}
         </Typography>
         <TextField
@@ -51,16 +51,19 @@ const AppointmentCard = ({
             }
           >
             <FormControlLabel
+              sx={{ userSelect: "none" }}
               value="60"
               control={<Radio />}
               label={"זקן + שיער ₪60"}
             />
             <FormControlLabel
+              sx={{ userSelect: "none" }}
               value="50"
               control={<Radio />}
-              label={"שער ₪50"}
+              label={"שיער ₪50"}
             />
             <FormControlLabel
+              sx={{ userSelect: "none" }}
               value="30"
               control={<Radio />}
               label={"זקן ₪30"}

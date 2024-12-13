@@ -1,17 +1,21 @@
 import { useEffect, useState } from "react";
-import { Button, Box } from "@mui/material";
+import { Box } from "@mui/material";
 import { generateTimeIntervals } from "./utils/generateTimeIntervals";
 import { AppointmentHeader } from "./components/AppointmentHeader";
 import { AppointmentCard } from "./components/AppointmentCard";
+import { Appointment } from "./types";
+import {
+  setAppointmentValuesFromDatabase,
+  writeAppointmentData,
+} from "./utils/writeAppointmentData";
 
 const AppointmentScheduler = () => {
   const [timeIntervals, setTimeIntervals] = useState<string[]>([]);
-  const [appointments, setAppointments] = useState(
-    [] as { fullName: string; service: string; time: string }[]
-  );
+  const [appointments, setAppointments] = useState<Appointment[]>([]);
 
   useEffect(() => {
     setTimeIntervals(generateTimeIntervals("10:00", "22:00"));
+    setAppointmentValuesFromDatabase(setAppointments);
   }, []);
 
   const handleInputChange = (
@@ -27,12 +31,15 @@ const AppointmentScheduler = () => {
 
       if (index > -1) {
         updatedAppointments[index][field] = value;
+        writeAppointmentData(updatedAppointments[index]);
       } else {
-        updatedAppointments.push({
+        const newAppointment = {
           fullName: field === "fullName" ? value : "",
           service: field === "service" ? value : "",
           time,
-        });
+        };
+        updatedAppointments.push(newAppointment);
+        writeAppointmentData(newAppointment);
       }
 
       return updatedAppointments;
@@ -44,9 +51,9 @@ const AppointmentScheduler = () => {
     return appointment ? appointment[field] : "";
   };
 
-  const handleSubmit = () => {
-    console.log("Appointments:", appointments);
-  };
+  // const handleSubmit = () => {
+  //   console.log("Appointments:", appointments);
+  // };
 
   return (
     <div dir="rtl" style={{ backgroundColor: "white" }}>
@@ -64,19 +71,12 @@ const AppointmentScheduler = () => {
       >
         {timeIntervals.map((interval) => (
           <AppointmentCard
+            key={interval}
             interval={interval}
             getAppointmentField={getAppointmentField}
             handleInputChange={handleInputChange}
           />
         ))}
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={handleSubmit}
-          style={{ marginTop: "16px" }}
-        >
-          שלח
-        </Button>
       </Box>
     </div>
   );

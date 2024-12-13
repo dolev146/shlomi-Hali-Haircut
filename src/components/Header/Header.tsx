@@ -47,6 +47,7 @@ const Header = () => {
             src={BusinessIcon}
             alt="Business Icon"
             style={{
+              userSelect: "none",
               width: "100%",
               height: "100%",
               objectFit: "cover", // Ensures the image scales nicely within the circle
