@@ -11,7 +11,9 @@ export const writeAppointmentData = async (newData: Appointment) => {
     const currentData = snapshot.val();
 
     // Ensure the data is an array or initialize it
-    let appointments: Appointment[] = Array.isArray(currentData) ? currentData : [];
+    const appointments: Appointment[] = Array.isArray(currentData)
+      ? currentData
+      : [];
 
     // Check if the appointment already exists (by matching the time)
     const existingIndex = appointments.findIndex(
@@ -61,6 +63,7 @@ const isValidAppointment = (obj: any): obj is Appointment => {
     obj !== null &&
     typeof obj.fullName === "string" &&
     typeof obj.service === "string" &&
-    typeof obj.time === "string"
+    typeof obj.time === "string" &&
+    typeof obj.date === "string"
   );
 };
