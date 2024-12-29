@@ -19,6 +19,7 @@ const AppointmentCardSchedulerOnSend = () => {
   const [selectedDate, setSelectedDate] = useState<Dayjs | null>(dayjs());
   const [selectedTimeInterval, setSelectedTimeInterval] = useState<string>("");
   const [fullName, setFullName] = useState<string>("");
+  const [phoneNumber, setPhoneNumber] = useState<string>("");
   const [selectedService, setSelectedService] = useState<{
     serviceName: string;
     cost: number;
@@ -31,7 +32,11 @@ const AppointmentCardSchedulerOnSend = () => {
   const [success, setSuccess] = useState(false);
 
   const isFormValid =
-    fullName && selectedService && selectedTimeInterval && selectedDate;
+    fullName &&
+    phoneNumber &&
+    selectedService &&
+    selectedTimeInterval &&
+    selectedDate;
 
   const handleSubmit = async () => {
     if (!isFormValid) return;
@@ -44,6 +49,7 @@ const AppointmentCardSchedulerOnSend = () => {
         time: selectedTimeInterval,
         service: selectedService,
         fullName,
+        phoneNumber,
         date: selectedDate!.format("DD-MM-YYYY"),
       });
       setSuccess(true);
@@ -80,6 +86,18 @@ const AppointmentCardSchedulerOnSend = () => {
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
               sx={{ marginBottom: 2 }}
+            />
+
+            <TextField
+              dir="rtl"
+              id="phone-number"
+              label="מספר טלפון"
+              variant="outlined"
+              fullWidth
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              sx={{ marginBottom: 2 }}
+              type="tel"
             />
 
             <ServiceChooser

@@ -1,7 +1,7 @@
 import { Alert } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers";
 import { Dayjs } from "dayjs";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const DateChooser = ({
   setSelectedDate,

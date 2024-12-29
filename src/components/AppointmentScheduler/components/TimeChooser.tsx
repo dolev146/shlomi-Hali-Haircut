@@ -6,7 +6,6 @@ import {
   Typography,
 } from "@mui/material";
 import { Dayjs } from "dayjs";
-import React from "react";
 
 const TimeChooser = ({
   setSelectedTimeInterval,
