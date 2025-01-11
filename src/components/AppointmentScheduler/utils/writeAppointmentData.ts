@@ -1,9 +1,8 @@
-import { ref, set, onValue, get } from "firebase/database";
-import { database } from "../../../services/firebase-service"; // Adjust the path accordingly
+import {  set, onValue, get } from "firebase/database";
+import { appointmentsRef } from "../../../services/firebase-service"; // Adjust the path accordingly
 import { Appointment } from "../types";
 
 export const writeAppointmentData = async (newData: Appointment) => {
-  const appointmentsRef = ref(database, "appointments");
 
   try {
     // Fetch the current data
@@ -35,7 +34,6 @@ export const writeAppointmentData = async (newData: Appointment) => {
   }
 };
 
-const appointmentsRef = ref(database, "appointments/");
 
 export const setAppointmentValuesFromDatabase = (
   setAppointments: (appointments: Appointment[]) => void
@@ -56,14 +54,3 @@ export const setAppointmentValuesFromDatabase = (
   });
 };
 
-// Helper function to validate an object as an Appointment
-const isValidAppointment = (obj: any): obj is Appointment => {
-  return (
-    typeof obj === "object" &&
-    obj !== null &&
-    typeof obj.fullName === "string" &&
-    typeof obj.service === "string" &&
-    typeof obj.time === "string" &&
-    typeof obj.date === "string"
-  );
-};

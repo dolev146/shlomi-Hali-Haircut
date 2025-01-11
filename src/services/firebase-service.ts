@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getDatabase } from "firebase/database";
+import { getDatabase, ref } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDXVgKmzOAaxQnko-XtIBU7dJozF63iKHY",
@@ -19,3 +19,4 @@ const app = initializeApp(firebaseConfig);
 // Export services
 export const analytics = getAnalytics(app);
 export const database = getDatabase(app);
+export const appointmentsRef = ref(database, "appointments/");

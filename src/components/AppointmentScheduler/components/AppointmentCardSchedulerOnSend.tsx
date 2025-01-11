@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Button,
   Card,
@@ -18,8 +18,12 @@ import { SuccessfullAppointment } from "./SuccessfullAppointment";
 const AppointmentCardSchedulerOnSend = () => {
   const [selectedDate, setSelectedDate] = useState<Dayjs | null>(dayjs());
   const [selectedTimeInterval, setSelectedTimeInterval] = useState<string>("");
-  const [fullName, setFullName] = useState<string>("");
-  const [phoneNumber, setPhoneNumber] = useState<string>("");
+  const [fullName, setFullName] = useState<string>(
+    localStorage.getItem("fullName") || ""
+  );
+  const [phoneNumber, setPhoneNumber] = useState<string>(
+    localStorage.getItem("phoneNumber") || ""
+  );
   const [selectedService, setSelectedService] = useState<{
     serviceName: string;
     cost: number;
@@ -37,6 +41,12 @@ const AppointmentCardSchedulerOnSend = () => {
     selectedService &&
     selectedTimeInterval &&
     selectedDate;
+
+  // Save full name and phone number to local storage when they change
+  useEffect(() => {
+    localStorage.setItem("fullName", fullName);
+    localStorage.setItem("phoneNumber", phoneNumber);
+  }, [fullName, phoneNumber]);
 
   const handleSubmit = async () => {
     if (!isFormValid) return;

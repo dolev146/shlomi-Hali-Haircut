@@ -1,21 +1,8 @@
+import { appointmentsRef } from "../../../services/firebase-service";
 import { Appointment } from "../../AppointmentScheduler/types";
-import { ref, get } from "firebase/database";
-import { database } from "../../../services/firebase-service"; // Adjust the path accordingly
+import { get } from "firebase/database";
+import { isValidAppointment } from "./isValidAppointment";
 
-const appointmentsRef = ref(database, "appointments/");
-
-// Helper function to validate an object as an Appointment
-const isValidAppointment = (obj: any): obj is Appointment => {
-  return (
-    typeof obj === "object" &&
-    obj !== null &&
-    typeof obj.fullName === "string" &&
-    typeof obj.service.serviceName === "string" &&
-    typeof obj.service.cost === "number" &&
-    typeof obj.time === "string" &&
-    typeof obj.date === "string"
-  );
-};
 
 // New function to fetch and process all appointments
 export const getAllAppointments = async (): Promise<Appointment[]> => {
