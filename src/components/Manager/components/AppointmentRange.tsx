@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Box, Typography, TextField, Button } from "@mui/material";
+import { useState } from "react";
+import { Box, Typography, Button } from "@mui/material";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { Appointment } from "../../AppointmentScheduler/types";
@@ -52,13 +52,11 @@ const AppointmentRange = () => {
               label="תאריך התחלה"
               value={startDate}
               onChange={(newValue) => setStartDate(newValue)}
-              renderInput={(params) => <TextField {...params} />}
             />
             <DatePicker
               label="תאריך סיום"
               value={endDate}
               onChange={(newValue) => setEndDate(newValue)}
-              renderInput={(params) => <TextField {...params} />}
             />
           </div>
         </Box>

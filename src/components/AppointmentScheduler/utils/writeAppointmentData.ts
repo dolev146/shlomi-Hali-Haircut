@@ -1,6 +1,7 @@
 import {  set, onValue, get } from "firebase/database";
 import { appointmentsRef } from "../../../services/firebase-service"; // Adjust the path accordingly
 import { Appointment } from "../types";
+import { isValidAppointment } from "../../Manager/utils/isValidAppointment";
 
 export const writeAppointmentData = async (newData: Appointment) => {
 

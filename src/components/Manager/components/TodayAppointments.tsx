@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Appointment } from "../../AppointmentScheduler/types";
-import { Container, Typography, Paper, Grid, Box } from "@mui/material";
+import { Container, Typography, Paper, Grid } from "@mui/material";
 import { subscribeToTodayAppointments } from "../utils/subscribeToTodayAppointments";
 
 const TodayAppointments = () => {

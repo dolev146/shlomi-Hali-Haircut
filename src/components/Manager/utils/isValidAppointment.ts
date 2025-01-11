@@ -1,3 +1,5 @@
+import { Appointment } from "../../AppointmentScheduler/types";
+
 // Helper function to validate an object as an Appointment
 export const isValidAppointment = (obj: any): obj is Appointment => {
   return (

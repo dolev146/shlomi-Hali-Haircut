@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { SyntheticEvent, useState } from "react";
 import { Box, Tabs, Tab, Typography } from "@mui/material";
 import { TodayAppointments } from "./components/TodayAppointments";
 import { AppointmentRange } from "./components/AppointmentRange";
@@ -6,8 +6,11 @@ import { AppointmentRange } from "./components/AppointmentRange";
 const Manager = () => {
   const [activeTab, setActiveTab] = useState(0);
 
-  const handleTabChange = (event, newValue) => {
+  const handleTabChange = (event: SyntheticEvent, newValue: number) => {
     setActiveTab(newValue);
+    if(event){
+     console.log(event) 
+    }
   };
 
   return (
