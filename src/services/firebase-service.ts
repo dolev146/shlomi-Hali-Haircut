@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getDatabase } from "firebase/database";
 import { getMessaging, getToken } from "firebase/messaging";
+import { getDatabase, ref } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDXVgKmzOAaxQnko-XtIBU7dJozF63iKHY",
@@ -36,3 +36,5 @@ export const generateToken = async () => {
   }
   return permission;
 };
+export const appointmentsRef = ref(database, "appointments/");
+
