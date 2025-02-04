@@ -26,12 +26,6 @@ const Manager = () => {
         }
       });
     };
-
-    const fetchAppointments = async () => {
-      const data = await getAllAppointments();
-      setAppointments(data);
-    };
-    fetchAppointments();
     notifyUser()
   }, []);
 
