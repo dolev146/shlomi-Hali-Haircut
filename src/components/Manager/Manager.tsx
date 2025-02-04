@@ -2,16 +2,35 @@ import { Box, Card, CardContent, Typography, Grid } from "@mui/material";
 import { useEffect, useState } from "react";
 import { getAllAppointments } from "./utils/getAllAppointments";
 import { Appointment } from "../AppointmentScheduler/types";
+import { generateToken, messaging } from "../../services/firebase-service";
+import { onMessage } from "firebase/messaging";
+import toast from "react-hot-toast";
 
 const Manager = () => {
   const [appointments, setAppointments] = useState<Appointment[]>([]);
 
   useEffect(() => {
+    const notifyUser = async () => {
+      const permission = await generateToken();
+      onMessage(messaging, (payload) => {
+        console.log(payload);
+        if (payload.notification?.body) {
+          toast(payload.notification?.body);
+        }
+        if (permission === "granted") {
+          if (payload.notification?.body) {
+            new Notification(payload.notification?.body);
+          }
+        }
+      });
+    };
+
     const fetchAppointments = async () => {
       const data = await getAllAppointments();
       setAppointments(data);
     };
     fetchAppointments();
+    notifyUser()
   }, []);
 
   return (
