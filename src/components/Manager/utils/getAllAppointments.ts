@@ -3,7 +3,6 @@ import { Appointment } from "../../AppointmentScheduler/types";
 import { get } from "firebase/database";
 import { isValidAppointment } from "./isValidAppointment";
 
-
 // New function to fetch and process all appointments
 export const getAllAppointments = async (): Promise<Appointment[]> => {
   try {
